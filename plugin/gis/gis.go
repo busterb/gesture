@@ -12,7 +12,7 @@ import (
 )
 
 func Create(bot *core.Gobot, config map[string]interface{}) {
-	defaultUrl, useDefault := config["default"].(string)
+	defaultUrl, useDefault := config["default"].([]interface{})[rand.Intn(len(config["default"].([]interface{})))].(string)
 	exclusions := getExclusions(config)
 	bot.ListenFor("^gis (.*)", func(msg core.Message, matches []string) core.Response {
 		for _, ex := range(exclusions) {
