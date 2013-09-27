@@ -13,13 +13,11 @@ import (
 var (
 	linkPrefixes = []*regexp.Regexp{
 		makeLinkRe("t.co"),
-		makeLinkRe("cl.ly"),
 		makeLinkRe("bit.ly"),
 		makeLinkRe("j.mp"),
 		makeLinkRe("tcrn.ch")}
 	expanders       = []expander{expandUrl, expandEmbeddedImages}
 	embeddedRePairs = []embeddedRePair{
-		makeRePair(`(http://)?(www\.)?cl\.ly[^\s]+`, `a class="embed".*(http://cl\.ly[^"]+)`, 1),
 		makeRePair(`(http://)?(www\.)?instagr.?am[^\s]+`, `img class="photo".*(http://[^"]+)`, 1),
 		makeRePair(`(http://)?(x\.)?kingsh\.it[^\s]+`, `a class="embed".*(http://x\.kingsh\.it[^"]+)`, 1),
 		makeRePair(`(https?://)?(www\.)?twitter\.com.*photo?[^\s]+`, `img src="(https?://[^"]+)".*Embedded image`, 1),
